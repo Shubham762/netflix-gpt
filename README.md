@@ -1,7 +1,9 @@
 # Netflix gpt
 -create react app
 -tailwind configuration
-
+-Header
+-Loginform
+-Sign up form
 
 # Feature
 Login/Signup Screen
