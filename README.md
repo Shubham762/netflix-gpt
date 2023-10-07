@@ -1,9 +1,16 @@
 # Netflix gpt
 -create react app
 -tailwind configuration
+-Routing of app
 -Header
 -Loginform
 -Sign up form
+-Form Validation
+-useref hooks
+-Firebase Setup
+-Deploying app on Production
+-Create Sign Up User Account
+
 
 # Feature
 Login/Signup Screen
