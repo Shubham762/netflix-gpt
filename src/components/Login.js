@@ -2,11 +2,20 @@ import { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/Validate";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login = () => {
   const [isSignedInForm, setIsSignedInForm] = useState(true);
   const [errormsg, setErrormsg] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const toggleSignInForm = () => {
     setIsSignedInForm(!isSignedInForm);
   };
@@ -27,7 +36,12 @@ const Login = () => {
 
     //signin.sign up logic
     if (!isSignedInForm) {
-        console.log("this is auth,email,pass",auth, email.current.value,password.current.value);
+      console.log(
+        "this is auth,email,pass",
+        auth,
+        email.current.value,
+        password.current.value
+      );
       //sign up logic
       createUserWithEmailAndPassword(
         auth,
@@ -37,8 +51,29 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log("this is ",user);
-          // ...
+          // console.log("this is ", user);
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://avatars.githubusercontent.com/u/44369765?s=400&u=bfe3d6129dd3467d8752f97c562e3c738a6b7a87&v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              /* the above dipath code is written as intial useffect update displya name and photourl with null value and sfter refresh it we get the value so above code dipatch a action and update a store with updated value from auth*/
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrormsg(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -47,21 +82,24 @@ const Login = () => {
           setErrormsg(errorCode + "_" + errorMessage);
         });
     } else {
-      
-      signInWithEmailAndPassword(auth, email.current.value,password.current.value)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log("this is ",user);
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("this is ", user);
+          // ...
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
 
-    setErrormsg(errorCode + "_" + errorMessage);
-  });
-
+          setErrormsg(errorCode + "_" + errorMessage);
+        });
     }
   };
 
@@ -83,6 +121,7 @@ const Login = () => {
         </h1>
         {!isSignedInForm && (
           <input
+            ref={name}
             type="Text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-700 rounded-lg"
