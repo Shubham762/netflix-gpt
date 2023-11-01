@@ -7,13 +7,13 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { PHOTOURL } from "../utils/constants";
+import { PageImage } from "../utils/constants";
 const Login = () => {
   const [isSignedInForm, setIsSignedInForm] = useState(true);
   const [errormsg, setErrormsg] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -54,8 +54,7 @@ const Login = () => {
           // console.log("this is ", user);
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/44369765?s=400&u=bfe3d6129dd3467d8752f97c562e3c738a6b7a87&v=4",
+            photoURL:PHOTOURL,
           })
             .then(() => {
               // Profile updated!
@@ -69,7 +68,7 @@ const Login = () => {
                 })
               );
               /* the above dipath code is written as intial useffect update displya name and photourl with null value and sfter refresh it we get the value so above code dipatch a action and update a store with updated value from auth*/
-              navigate("/browse");
+
             })
             .catch((error) => {
               setErrormsg(error.message);
@@ -90,9 +89,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("this is ", user);
-          // ...
-          navigate("/browse");
+         
+         
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -108,7 +106,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={PageImage}
           alt="Nteflixlogo"
         />
       </div>
