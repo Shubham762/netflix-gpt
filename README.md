@@ -28,6 +28,7 @@
 -Update store with trailor video data
 -Embaded the youtube video and make it auto play and mude 
 -Tailwind css used for styling
+-Build Suggestion/recommended section
 
 
 

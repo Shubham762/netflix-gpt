@@ -3,6 +3,11 @@ import Header from "./Header";
 import useNowplayingMovies from "../hooks/useNowplayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import useTvShows from "../hooks/useTvShows";
+import useLatesTvShows from "../hooks/useLatestTvShow";
 // import { API_OPTIONS } from "../utils/constants";
 // import { useDispatch } from "react-redux";
 // import { addNowPlayingMovies } from "../utils/moviesSlice";
@@ -10,7 +15,11 @@ import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
      useNowplayingMovies();   //this custom hook is replaced by below code
-
+     usePopularMovies();   //custom hook for fetching popular movies data
+     useTopRatedMovies();   //custom hook for fetching top rated movies data
+     useUpcomingMovies();      //custom hook for fetching upcoming movies data
+     useTvShows();            //custom hook for fetching TV SHOWS
+     useLatesTvShows();
   //fetch data from TMDB API and UPdate the store   taking this logic of api calling inside useNowPlayingMovies HOOKS(custom hooks)
 
   // const dispatch = useDispatch();

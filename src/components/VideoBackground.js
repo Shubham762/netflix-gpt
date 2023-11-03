@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 //import { addTrailerVideo } from "../utils/moviesSlice";
 const VideoBackground = ({ movieId }) => {
-    const autoplayvideo= "?&autoplay=1&mute=1"
+   // const autoplayvideo= "?&autoplay=1&mute=1"
     const trailerMovie =useSelector((store) => store?.movies?.trailerVideo);
 
      useMovieTrailer(movieId);
