@@ -14,9 +14,12 @@ const useLatesTvShows=()=>{
    
     const dispatch = useDispatch();
   const getLatestTvShows = async () => {
-    const moviedata = await fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
+    const moviedata = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      API_OPTIONS
+    );
     const json=await moviedata.json();
-    console.log("this isLatest Shows",json);
+   // console.log("this isLatest Shows",json);
     dispatch(addLatestTvShows(json.results));
 
   };
@@ -26,3 +29,5 @@ const useLatesTvShows=()=>{
 }
 
 export default useLatesTvShows;
+
+

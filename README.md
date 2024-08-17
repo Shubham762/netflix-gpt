@@ -29,6 +29,17 @@
 -Embaded the youtube video and make it auto play and mude 
 -Tailwind css used for styling
 -Build Suggestion/recommended section
+-Build suggestion for trending upcoming and tv shows lists
+-created custom hooks for popular movies and other 
+-Build movie list
+-Build movie card
+-found out TMDB CDn for Image card
+-used tailwind for styling
+-usePopularmovies custom hook
+-GPT Search page
+-GPT searchbar
+-Multi language feature in search page
+-Integrate GPT APIs
 
 
 

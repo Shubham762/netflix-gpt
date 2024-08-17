@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from './MoviesCard';
 
 const MovieList = ({title,movies}) => {
-      console.log("Poster path is ",movies)
+     // console.log("Poster path is ",movies)
     //  console.log("backdrop_path is backdrop_path",movies[0]?.backdrop_path)
 
   return (

@@ -17,7 +17,7 @@ const useTvShows=()=>{
       API_OPTIONS
     );
     const json=await moviedata.json();
-    console.log("this is TV SHOWS",json);
+   // console.log("this is TV SHOWS",json);
     dispatch(addUpcomingMovies(json.results));
 
   };

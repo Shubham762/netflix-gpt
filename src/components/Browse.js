@@ -8,12 +8,16 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import useTvShows from "../hooks/useTvShows";
 import useLatesTvShows from "../hooks/useLatestTvShow";
+import GptSearch from "./GptSearch";
+import { useSelector } from "react-redux";
+
 // import { API_OPTIONS } from "../utils/constants";
 // import { useDispatch } from "react-redux";
 // import { addNowPlayingMovies } from "../utils/moviesSlice";
 
 
 const Browse = () => {
+  const showGptSearch=useSelector((store)=>store.gpt.showGptSearch)
      useNowplayingMovies();   //this custom hook is replaced by below code
      usePopularMovies();   //custom hook for fetching popular movies data
      useTopRatedMovies();   //custom hook for fetching top rated movies data
@@ -47,10 +51,15 @@ const Browse = () => {
               -Movielist*n
               movie cards*n  
         */
+       console.log("this is showGptSearch",showGptSearch)
       }
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+      {
+        showGptSearch ?  <GptSearch /> : <> <MainContainer />
+        <SecondaryContainer /> </>
+      }
+     
+      
     </div>
   );
 };
