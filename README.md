@@ -40,6 +40,15 @@
 -GPT searchbar
 -Multi language feature in search page
 -Integrate GPT APIs
+-GPT Search Open AI api key
+-GPT Searcg api call
+-Fetched GPT Movie suggestions from TMDB API
+-GPT Slice added movie data
+-Reuse movie list component to make gpt suggestion movie page
+-Memoization
+-Adding .env file to gitignore
+-Made it responsive
+
 
 
 
