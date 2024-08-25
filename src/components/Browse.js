@@ -51,7 +51,7 @@ const Browse = () => {
               -Movielist*n
               movie cards*n  
         */
-       console.log("this is showGptSearch",showGptSearch)
+      // console.log("this is showGptSearch",showGptSearch)
       }
       <Header />
       {

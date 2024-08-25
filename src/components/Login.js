@@ -108,13 +108,14 @@ const Login = () => {
         <img
           src={PageImage}
           alt="Nteflixlogo"
+          className="h-screen object-cover"
         />
       </div>
       <form
-        className="w-3/12 absolute p-12 bg-black my-36 m-auto left-0 right-0 text-white bg-opacity-80"
+        className="w-ful md:w-3/12 absolute p-12 bg-black my-36 m-auto left-0 right-0 text-white bg-opacity-80"
         onSubmit={(e) => e.preventDefault()}
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="text-3xl py-4 font-semibold md:font-bold">
           {isSignedInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignedInForm && (
@@ -137,9 +138,9 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700 rounded-lg"
         />
-        <p className="text-red-600 font-bold text-lg py-2">{errormsg}</p>
+        <p className="text-red-600 font-semibold md:font-bold text-lg py-2">{errormsg}</p>
         <button
-          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          className="p-4 my-6 bg-red-700 w-full rounded-lg font-semibold md:font-bold"
           onClick={handleButtonClick}
         >
           {isSignedInForm ? "Sign In" : "Sign UP"}

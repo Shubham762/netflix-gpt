@@ -2,19 +2,18 @@ import { PageImage } from "../utils/constants";
 import GptMovieSuggestion from "./GptMovieSuggestion";
 import GptSearchBar from "./GptSearchBar";
 
-const GptSearch=()=>{
+const GptSearch = () => {
   return (
-    <div>
-       <div className="fixed -z-10">
-        <img
-          src={PageImage}
-          alt="Nteflixlogo"
-        />
+    <>
+      <div className="fixed -z-10">
+        <img src={PageImage} alt="Nteflixlogo" className="h-screen object-cover"/>
       </div>
-       <GptSearchBar />
-        <GptMovieSuggestion/>
-    </div>
-  )
-}
+      <div className="">
+        <GptSearchBar />
+        <GptMovieSuggestion />
+      </div>
+    </>
+  );
+};
 
 export default GptSearch;
