@@ -1,5 +1,6 @@
 import {IMG_CDN} from '../utils/constants'
 const MovieCard =({posterPath})=>{
+    if(!posterPath) return
     return(
         <div className='w-60 pr-6'>
             <img 
