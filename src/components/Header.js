@@ -68,7 +68,7 @@ const Header = () => {
             src="https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-1.png"/> */}
           {showGptSearch && (
             <select
-              className="p-2  m-2 -mt-1 bg-gray-900 text-white"
+              className="p-2  m-2 mt-0 md:-mt-1 bg-gray-900 text-white"
               onChange={(e) => {
                 handleLangugaeChange(e.target.value);
               }}
